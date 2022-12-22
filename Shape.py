@@ -10,49 +10,45 @@ Created on Thu Dec 22 02:28:03 2022
 import math
 from point import Point
 class Shape:
-    def __init__ (self,x,y,r,c=Point(a,b),color):
+    def __init__ (self,x,y,r,c=Point(0,0),color):
         self.__x=x
         self.__y=y
         self.__r=r
         self.__a=a
         self.__b=b
         self.__color=color
- #تعیین مربع یا دایره بودن        
+#تعیین دایره یا مربع بودن
         if(r>0):
-            self.type=circle
+            self.type='circle'
         else:
-            self.type=square
-
-    def getx (self):
-        return self.__x
-    def gety (self):
-        return self.__y
-    def getr (self):
-        return self.__r
-    def geta (self):
-        return self.__a
-    def getb (self):
-        return self.__b
-    def getcolor (self):
-        return self.__color
-    
+            self.type='square'  
 #محاسبه مساحت
     def area (self):
-        if self.type== circle:
+        if self.type== 'circle':
             return(3.14*self.__r*self.__r)
         else:
             return(self.__x*self.__y)
+        
 #محاسبه محیط
     def perimeter (self):
-        if self.type==circle:
+        if self.type=='circle':
             return(2*3.14*self.__r)
         elif (self.__x) != (self.__y):
+            
+#فاصله شکل تا مرکز
+    def distance (self):
+        return math.sqrt((self.__x)^2+(self.__y)^2)
+    
+#فاصله شکل با شکل دیگر
+    def distancefrom (self,point.__x,point.__y):
+        return math.sqrt((self.__x-point.__x)^2+(self.__y-point.__y)^2)
+
 #داخل بودن شکل با شکل دیگر
-    def isinside (self,p.x,p.y,p.r):
-        if self.type==circle:
+    def isinside (self,point.__x,point.__y,p.r):
+        if self.type=='circle':
             self.plus=(self.__r)+(p.r)
-            self.dp = math.sqrt((self.__x-p.x)^2+(self.__y-p.y)^2)
-            if (self.plus - self.dp) <= 0:
+            self.dplus = math.sqrt((self.__x-point.__x)^2+(self.__y-point.__y)^2)
+            if (self.plus - self.dplus) <= 0:
                 return True
             else:
                 return False
